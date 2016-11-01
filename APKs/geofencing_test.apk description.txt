@@ -1,0 +1,8 @@
+To set point, one should enter it's name in the bottom, and then use long-tap for setting new point.
+Logs can be found at "\Documents\GeoFencingTest\entersExits.txt"
+
+For me critically awful are 3 things about it:
+
+1) it drains battery
+2) it doesn't work on my Note 4 with "airplane-mode" + "wifi-OFF"
+3) sometime enter-exit events are lost for unknown reasons
