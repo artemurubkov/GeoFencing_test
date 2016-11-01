@@ -46,66 +46,9 @@ public class Logger {
         appendLogToFile(tag, string);
     }
 
-    public static void d(String tag, String string) {
-            android.util.Log.d(tag, "" + string);
-        appendLogToFile(tag, string);
-    }
-
-    public static void v(String tag, String string) {
-            android.util.Log.v(tag, "" + string);
-        appendLogToFile(tag, string);
-    }
-
-    public static void w(String tag, String string) {
-            android.util.Log.w(tag, "" + string);
-        appendLogToFile(tag, string);
-    }
-
-    public static void w(String tag, IOException ex) {
-            android.util.Log.w(tag, "" + ex);
-    }
-
-    public static void w(String tag, String string, Throwable t) {
-            android.util.Log.w(tag, "" + string, t);
-        appendLogToFile(tag, string + " " + t.getMessage());
-    }
-
-//    public static boolean isLog() {
-//        boolean debuggable = false;
-//        Context ctx = ConnectedInsuranceApp.getInstance().getBaseContext();
-//        PackageManager pm = ctx.getPackageManager();
-//        try {
-//            ApplicationInfo appinfo = pm.getApplicationInfo(
-//                    ctx.getPackageName(), 0);
-//            debuggable = (0 != (appinfo.flags &= ApplicationInfo.FLAG_DEBUGGABLE));
-//        } catch (NameNotFoundException e) {
-//            android.util.Log.e("LOGGER EXCEPTION", e.toString());
-//        }
-//
-//        return debuggable;
-//    }
-
     private static void appendLogToFile(String tag, String message) {
         appendLogToFile(fullDateAsStringFormat.format(new Date()) + ", " + tag + ", " + message);
     }
-
-//    private static void appendLogToFile(String text) {
-//        File logFile = new File("../" + GeofenceApplication.getContext().getApplicationInfo().dataDir + "/log.txt");
-//        if (!logFile.exists()) {
-//            try {
-//                logFile.createNewFile();
-//            } catch (IOException e) {
-//            }
-//        }
-//        try {
-//            //BufferedWriter for performance, true to set append to file flag
-//            BufferedWriter buf = new BufferedWriter(new FileWriter(logFile, true));
-//            buf.append(text);
-//            buf.newLine();
-//            buf.close();
-//        } catch (IOException e) {
-//        }
-//    }
 
     private static void appendLogToFile(String text) {
         File dir = null;

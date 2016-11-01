@@ -37,42 +37,44 @@ public final class Constants {
     // An app with dynamically-created geofences would want to include a reasonable expiration time.
     public static final long GEOFENCE_EXPIRATION_TIME = Geofence.NEVER_EXPIRE;
 
+    public static final float DEFAULT_RADIUS = 70.f;
+
     // Geofence parameters for the Android building on Google's main campus in Mountain View.
-    public static final String WORKPLACE_ID = "workplace";
-    public static final double WORKPLACE_LATITUDE = 56.970688;
-    public static final double WORKPLACE_LONGITUDE = 24.161230;
-    public static final float WORKPLACE_RADIUS_METERS = 70.0f;
-
-    // Geofence parameters for the Yerba Buena Gardens near the Moscone Center in San Francisco.
-    public static final String GUSTAVA_ZEMGALA = "gustava_zemgala";
-    public static final double GUSTAVA_ZEMGALA_LATITUDE = 56.972701;
-    public static final double GUSTAVA_ZEMGALA_LONGITUDE = 24.165375;
-    public static final float GUSTAVA_ZEMGALA_RADIUS_METERS = 50.0f;
-
-    public static final String GUSTAVA_ZEMGALA_1 = "gustava_zemgala_1";
-    public static final double GUSTAVA_ZEMGALA_LATITUDE_1 = 56.972912;
-    public static final double GUSTAVA_ZEMGALA_LONGITUDE_1 = 24.166083;
-    public static final float GUSTAVA_ZEMGALA_RADIUS_METERS_1 = 150.0f;
-
-    public static final String BIKIRNIEKU_ID = "bikirnieku";
-    public static final double BIKIRNIEKU_LATITUDE = 56.973498;
-    public static final double BIKIRNIEKU_LONGITUDE = 24.167862;
-    public static final float BIKIRNIEKU_RADIUS_METERS = 30.0f;
-
-    public static final String ALFA_ID = "alfa";
-    public static final double ALFA_LATITUDE = 56.983204;
-    public static final double ALFA_LONGITUDE = 24.202774;
-    public static final float ALFA_RADIUS_METERS = 450.0f;
-
-    public static final String FOREST_ID = "forest";
-    public static final double FOREST_LATITUDE = 56.985998;
-    public static final double FOREST_LONGITUDE = 24.212901;
-    public static final float FOREST_RADIUS_METERS = 50.0f;
-
-    public static final String HOME_ID = "home";
-    public static final double HOME_LATITUDE = 56.988182;
-    public static final double HOME_LONGITUDE = 24.226432;
-    public static final float HOME_RADIUS_METERS = 60.0f;
+//    public static final String WORKPLACE_ID = "workplace";
+//    public static final double WORKPLACE_LATITUDE = 56.970688;
+//    public static final double WORKPLACE_LONGITUDE = 24.161230;
+//    public static final float WORKPLACE_RADIUS_METERS = 70.0f;
+//
+//    // Geofence parameters for the Yerba Buena Gardens near the Moscone Center in San Francisco.
+//    public static final String GUSTAVA_ZEMGALA = "gustava_zemgala";
+//    public static final double GUSTAVA_ZEMGALA_LATITUDE = 56.972701;
+//    public static final double GUSTAVA_ZEMGALA_LONGITUDE = 24.165375;
+//    public static final float GUSTAVA_ZEMGALA_RADIUS_METERS = 50.0f;
+//
+//    public static final String GUSTAVA_ZEMGALA_1 = "gustava_zemgala_1";
+//    public static final double GUSTAVA_ZEMGALA_LATITUDE_1 = 56.972912;
+//    public static final double GUSTAVA_ZEMGALA_LONGITUDE_1 = 24.166083;
+//    public static final float GUSTAVA_ZEMGALA_RADIUS_METERS_1 = 150.0f;
+//
+//    public static final String BIKIRNIEKU_ID = "bikirnieku";
+//    public static final double BIKIRNIEKU_LATITUDE = 56.973498;
+//    public static final double BIKIRNIEKU_LONGITUDE = 24.167862;
+//    public static final float BIKIRNIEKU_RADIUS_METERS = 30.0f;
+//
+//    public static final String ALFA_ID = "alfa";
+//    public static final double ALFA_LATITUDE = 56.983204;
+//    public static final double ALFA_LONGITUDE = 24.202774;
+//    public static final float ALFA_RADIUS_METERS = 450.0f;
+//
+//    public static final String FOREST_ID = "forest";
+//    public static final double FOREST_LATITUDE = 56.985998;
+//    public static final double FOREST_LONGITUDE = 24.212901;
+//    public static final float FOREST_RADIUS_METERS = 50.0f;
+//
+//    public static final String HOME_ID = "home";
+//    public static final double HOME_LATITUDE = 56.988182;
+//    public static final double HOME_LONGITUDE = 24.226432;
+//    public static final float HOME_RADIUS_METERS = 60.0f;
 
     // The constants below are less interesting than those above.
 

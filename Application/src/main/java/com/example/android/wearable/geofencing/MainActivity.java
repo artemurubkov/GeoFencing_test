@@ -16,51 +16,9 @@
 
 package com.example.android.wearable.geofencing;
 
-import static com.example.android.wearable.geofencing.Constants.ALFA_ID;
-import static com.example.android.wearable.geofencing.Constants.ALFA_LATITUDE;
-import static com.example.android.wearable.geofencing.Constants.ALFA_LONGITUDE;
-import static com.example.android.wearable.geofencing.Constants.ALFA_RADIUS_METERS;
-
-import static com.example.android.wearable.geofencing.Constants.BIKIRNIEKU_ID;
-import static com.example.android.wearable.geofencing.Constants.BIKIRNIEKU_LATITUDE;
-import static com.example.android.wearable.geofencing.Constants.BIKIRNIEKU_LONGITUDE;
-import static com.example.android.wearable.geofencing.Constants.BIKIRNIEKU_RADIUS_METERS;
-
-import static com.example.android.wearable.geofencing.Constants.WORKPLACE_ID;
-import static com.example.android.wearable.geofencing.Constants.WORKPLACE_LATITUDE;
-import static com.example.android.wearable.geofencing.Constants.WORKPLACE_LONGITUDE;
-import static com.example.android.wearable.geofencing.Constants.WORKPLACE_RADIUS_METERS;
-
-import static com.example.android.wearable.geofencing.Constants.CONNECTION_FAILURE_RESOLUTION_REQUEST;
-import static com.example.android.wearable.geofencing.Constants.GEOFENCE_EXPIRATION_TIME;
-import static com.example.android.wearable.geofencing.Constants.TAG;
-
-import static com.example.android.wearable.geofencing.Constants.GUSTAVA_ZEMGALA;
-import static com.example.android.wearable.geofencing.Constants.GUSTAVA_ZEMGALA_LATITUDE;
-import static com.example.android.wearable.geofencing.Constants.GUSTAVA_ZEMGALA_LONGITUDE;
-import static com.example.android.wearable.geofencing.Constants.GUSTAVA_ZEMGALA_RADIUS_METERS;
-
-import static com.example.android.wearable.geofencing.Constants.GUSTAVA_ZEMGALA_1;
-import static com.example.android.wearable.geofencing.Constants.GUSTAVA_ZEMGALA_LATITUDE_1;
-import static com.example.android.wearable.geofencing.Constants.GUSTAVA_ZEMGALA_LONGITUDE_1;
-import static com.example.android.wearable.geofencing.Constants.GUSTAVA_ZEMGALA_RADIUS_METERS_1;
-
-import static com.example.android.wearable.geofencing.Constants.FOREST_ID;
-import static com.example.android.wearable.geofencing.Constants.FOREST_LATITUDE;
-import static com.example.android.wearable.geofencing.Constants.FOREST_LONGITUDE;
-import static com.example.android.wearable.geofencing.Constants.FOREST_RADIUS_METERS;
-
-import static com.example.android.wearable.geofencing.Constants.HOME_ID;
-import static com.example.android.wearable.geofencing.Constants.HOME_LATITUDE;
-import static com.example.android.wearable.geofencing.Constants.HOME_LONGITUDE;
-import static com.example.android.wearable.geofencing.Constants.HOME_RADIUS_METERS;
-
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.IntentSender;
-import android.location.Location;
-import android.os.BatteryManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -69,9 +27,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
@@ -88,6 +46,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.android.wearable.geofencing.Constants.CONNECTION_FAILURE_RESOLUTION_REQUEST;
+import static com.example.android.wearable.geofencing.Constants.GEOFENCE_EXPIRATION_TIME;
+import static com.example.android.wearable.geofencing.Constants.TAG;
+
 public class MainActivity extends AppCompatActivity implements ConnectionCallbacks,
         OnConnectionFailedListener, ResultCallback<Status>, OnMapReadyCallback {
 
@@ -97,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionCallbac
 
     // Internal List of Geofence objects. In a real app, these might be provided by an API based on
     // locations within the user's proximity.
-    List<Geofence> gfList;
+    List<Geofence> gfList = new ArrayList<Geofence>();;
 
     // These will store hard-coded geofences in this sample app.
     private SimpleGeofence mAndroidBuildingGeofence;
@@ -178,9 +140,6 @@ public class MainActivity extends AppCompatActivity implements ConnectionCallbac
 
         // Instantiate a new geofence storage area.
         gfStorage = new SimpleGeofenceStore(this);
-        // Instantiate the current List of geofences.
-        gfList = new ArrayList<Geofence>();
-//        createGeofences();
 
         Logger.i(LOG_TAG, "permissions granted: " + PermissionDialogActivity.isLocationPermissionGranted(getApplicationContext()));
         if (!PermissionDialogActivity.isLocationPermissionGranted(getApplicationContext())) {
@@ -194,91 +153,6 @@ public class MainActivity extends AppCompatActivity implements ConnectionCallbac
         builder.addGeofences(gfList);
         return builder.build();
     }
-
-    /**
-     * In this sample, the geofences are predetermined and are hard-coded here. A real app might
-     * dynamically create geofences based on the user's location.
-     */
-//    public void createGeofences() {
-//        // Create internal "flattened" objects containing the geofence data.
-//        mAndroidBuildingGeofence = new SimpleGeofence(
-//                WORKPLACE_ID,                // geofenceId.
-//                WORKPLACE_LATITUDE,
-//                WORKPLACE_LONGITUDE,
-//                WORKPLACE_RADIUS_METERS,
-//                GEOFENCE_EXPIRATION_TIME,
-//                Geofence.GEOFENCE_TRANSITION_ENTER | Geofence.GEOFENCE_TRANSITION_EXIT
-//        );
-//        g1 = new SimpleGeofence(
-//                GUSTAVA_ZEMGALA,                // geofenceId.
-//                GUSTAVA_ZEMGALA_LATITUDE,
-//                GUSTAVA_ZEMGALA_LONGITUDE,
-//                GUSTAVA_ZEMGALA_RADIUS_METERS,
-//                GEOFENCE_EXPIRATION_TIME,
-//                Geofence.GEOFENCE_TRANSITION_ENTER | Geofence.GEOFENCE_TRANSITION_EXIT
-//        );
-//
-//        g2 = new SimpleGeofence(
-//                GUSTAVA_ZEMGALA_1,                // geofenceId.
-//                GUSTAVA_ZEMGALA_LATITUDE_1,
-//                GUSTAVA_ZEMGALA_LONGITUDE_1,
-//                GUSTAVA_ZEMGALA_RADIUS_METERS_1,
-//                GEOFENCE_EXPIRATION_TIME,
-//                Geofence.GEOFENCE_TRANSITION_ENTER | Geofence.GEOFENCE_TRANSITION_EXIT
-//        );
-//
-//        g3 = new SimpleGeofence(
-//                ALFA_ID,                // geofenceId.
-//                ALFA_LATITUDE,
-//                ALFA_LONGITUDE,
-//                ALFA_RADIUS_METERS,
-//                GEOFENCE_EXPIRATION_TIME,
-//                Geofence.GEOFENCE_TRANSITION_ENTER | Geofence.GEOFENCE_TRANSITION_EXIT
-//        );
-//
-//        g4 = new SimpleGeofence(
-//                BIKIRNIEKU_ID,                // geofenceId.
-//                BIKIRNIEKU_LATITUDE,
-//                BIKIRNIEKU_LONGITUDE,
-//                BIKIRNIEKU_RADIUS_METERS,
-//                GEOFENCE_EXPIRATION_TIME,
-//                Geofence.GEOFENCE_TRANSITION_ENTER | Geofence.GEOFENCE_TRANSITION_EXIT
-//        );
-//
-//        g5 = new SimpleGeofence(
-//                FOREST_ID,                // geofenceId.
-//                FOREST_LATITUDE,
-//                FOREST_LONGITUDE,
-//                FOREST_RADIUS_METERS,
-//                GEOFENCE_EXPIRATION_TIME,
-//                Geofence.GEOFENCE_TRANSITION_ENTER | Geofence.GEOFENCE_TRANSITION_EXIT
-//        );
-//
-//        g6 = new SimpleGeofence(
-//                HOME_ID,                // geofenceId.
-//                HOME_LATITUDE,
-//                HOME_LONGITUDE,
-//                HOME_RADIUS_METERS,
-//                GEOFENCE_EXPIRATION_TIME,
-//                Geofence.GEOFENCE_TRANSITION_ENTER | Geofence.GEOFENCE_TRANSITION_EXIT
-//        );
-//
-//        // Store these flat versions in SharedPreferences and add them to the geofence list.
-//        gfStorage.setGeofence(WORKPLACE_ID, mAndroidBuildingGeofence);
-//        gfStorage.setGeofence(GUSTAVA_ZEMGALA, g1);
-//        gfStorage.setGeofence(GUSTAVA_ZEMGALA_1, g2);
-//        gfStorage.setGeofence(ALFA_ID, g3);
-//        gfStorage.setGeofence(BIKIRNIEKU_ID, g4);
-//        gfStorage.setGeofence(FOREST_ID, g5);
-//        gfStorage.setGeofence(HOME_ID, g6);
-//        gfList.add(mAndroidBuildingGeofence.toGeofence());
-//        gfList.add(g1.toGeofence());
-//        gfList.add(g2.toGeofence());
-//        gfList.add(g3.toGeofence());
-//        gfList.add(g4.toGeofence());
-//        gfList.add(g5.toGeofence());
-//        gfList.add(g6.toGeofence());
-//    }
 
     private boolean isGoogleServicesConnected;
 
@@ -424,7 +298,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionCallbac
                     pointName,                // geofenceId.
                     point.latitude,
                     point.longitude,
-                    70.f,
+                    Constants.DEFAULT_RADIUS,
                     GEOFENCE_EXPIRATION_TIME,
                     Geofence.GEOFENCE_TRANSITION_ENTER | Geofence.GEOFENCE_TRANSITION_EXIT
             );
