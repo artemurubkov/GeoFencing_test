@@ -78,6 +78,7 @@ public class SimpleGeofence {
         // Build a new Geofence object.
         return new Geofence.Builder()
                 .setRequestId(mId)
+                //.setNotificationResponsiveness (/*influences battery consumption - investigate it to obtain acceptable result*/)
                 .setTransitionTypes(mTransitionType)
                 .setCircularRegion(mLatitude, mLongitude, mRadius)
                 .setExpirationDuration(mExpirationDuration)
